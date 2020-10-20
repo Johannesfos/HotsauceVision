@@ -11,7 +11,7 @@ import { GetStaticProps, NextPage } from 'next'
 type Props = {
   initimages: ImageModel[]
 }
-
+//images component
 const Images: NextPage<Props> = ({ initimages }) => {
   // state hvor vi lagrer bilder når de er ferdig hentet
   const [allImages, setAllImages] = useState<ImageModel[]>(initimages)
