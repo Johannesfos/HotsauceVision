@@ -8,3 +8,4 @@ export const Video = () => {
     </div>
   )
 }
+export default Video
