@@ -10,7 +10,7 @@ import { mapUserData } from '../utils/auth/mapUserData'
 // Init the Firebase app.
 initFirebase()
 
-const firebaseAuthConfig = {
+const firebaseAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
   // Auth providers
   // https://github.com/firebase/firebaseui-web#configure-oauth-providers
@@ -23,9 +23,10 @@ const firebaseAuthConfig = {
   signInSuccessUrl: '/',
   credentialHelper: 'none',
   callbacks: {
-    signInSuccessWithAuthResult: async ({ user }, redirectUrl) => {
+    signInSuccessWithAuthResult: ({ user }) => {
       const userData = mapUserData(user)
       setUserCookie(userData)
+      return true
     },
   },
 }

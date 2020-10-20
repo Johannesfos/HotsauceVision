@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 import Link from 'next/link'
 import { Header } from './header'
 import { useUser, useUserMethods } from '../../utils/auth/useUser'
 import { Footer } from './footer'
 
-export const Layout = ({ children }) => {
+export const Layout: FC = ({ children }) => {
   const user = useUser()
   const { logout } = useUserMethods()
 
