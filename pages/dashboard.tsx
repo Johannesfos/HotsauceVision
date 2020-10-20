@@ -1,18 +1,16 @@
 import React, { useRef, useState } from 'react'
-import { useMustAuthenticate } from '../frontend/utils/auth/useUser'
 import { ImageService } from '../frontend/logic/image_service'
 import { categoryToString, categoryList } from '../frontend/utils/category_util'
 
 const Dashboard = () => {
-  const [imageToUpload, setImageToUpload] = useState()
-  const [isFile, setIsFile] = useState()
-  const { user } = useMustAuthenticate()
-  const [description, setDescription] = useState()
-  const [category, setCategory] = useState()
+  const [imageToUpload, setImageToUpload] = useState<File | null>()
+  const [isFile, setIsFile] = useState<boolean>()
+  const [description, setDescription] = useState<string>()
+  const [category, setCategory] = useState<string>()
 
-  const fileInputRef = useRef()
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
-  const uploadFileHandler = (event) => {
+  const uploadFileHandler = (event: any) => {
     const image = event.target.files[0]
 
     try {
@@ -27,25 +25,31 @@ const Dashboard = () => {
   }
 
   const onUploadFile = () => {
-    fileInputRef.current.click()
+    if (fileInputRef.current) {
+      fileInputRef.current.click()
+    }
   }
 
   const submitImg = () => {
-    //sending image to imageservice to handle upload to firebase
-    const uploadMsg = ImageService.uploadImage(
-      imageToUpload,
-      category,
-      description
-    )
+    if (imageToUpload && category && description) {
+      //sending image to imageservice to handle upload to firebase
+      const uploadMsg = ImageService.uploadImage(
+        imageToUpload,
+        category,
+        description
+      )
 
-    console.log({ uploadMsg })
+      console.log({ uploadMsg })
+    } else {
+      console.warn('Missing image, category or description')
+    }
   }
 
-  const descriptionChange = (event) => {
+  const descriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(event.target.value)
   }
 
-  const categoryChange = (event) => {
+  const categoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(event.target.value)
   }
 
@@ -61,7 +65,7 @@ const Dashboard = () => {
               onChange={uploadFileHandler}
             />
             <button onClick={onUploadFile}>Select file:</button>
-            {isFile && '    SelectedFile: ' + imageToUpload.name}
+            {isFile && '    SelectedFile: ' + imageToUpload?.name}
           </div>
           <p>Name:</p>
           <input type="text" onChange={descriptionChange} />

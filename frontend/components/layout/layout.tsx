@@ -20,8 +20,11 @@ export const Layout: FC = ({ children }) => {
               <a>Home</a>
             </Link>
 
-            <Link prefetch href="/images">
+            <Link prefetch href="/video">
               <a>Photo</a>
+            </Link>
+            <Link prefetch href="/images">
+              <a>Video</a>
             </Link>
             <Link prefetch href="/dashboard">
               <a>Dashboard</a>
