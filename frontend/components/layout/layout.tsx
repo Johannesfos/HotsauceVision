@@ -64,6 +64,7 @@ export const Layout: FC = ({ children }) => {
         main {
           flex: 1;
           padding-top: 15px;
+          padding-left: 50px;
           font-family: 'tahoma';
         }
 
