@@ -53,8 +53,6 @@ export const Footer = () => {
         .childbox {
           margin: auto;
           text-align: center;
-          height: 200px;
-          width: 33vw;
         }
         .logostyle {
           width: 5%;

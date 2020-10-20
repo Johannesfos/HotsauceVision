@@ -55,38 +55,31 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="pageStyle">
-        <h2>Management</h2>
-        <div className="select-file-wrapper">
-          <div className="file-input">
-            <input
-              ref={fileInputRef}
-              type="file"
-              onChange={uploadFileHandler}
-            />
-            <button onClick={onUploadFile}>Select file:</button>
-            {isFile && '    SelectedFile: ' + imageToUpload?.name}
-          </div>
-          <p>Name:</p>
-          <input type="text" onChange={descriptionChange} />
-          <p>Category:</p>
-          <select
-            defaultValue={''}
-            name="category"
-            id="category"
-            onChange={categoryChange}
-          >
-            <option value="" disabled>
-              Choose a category...
-            </option>
-            {categoryList.map((category) => (
-              <option key={category} value={category}>
-                {categoryToString(category)}
-              </option>
-            ))}
-          </select>
-          <button onClick={submitImg}>Upload</button>
+      <div className="select-file-wrapper">
+        <div className="file-input">
+          <input ref={fileInputRef} type="file" onChange={uploadFileHandler} />
+          <button onClick={onUploadFile}>Select file:</button>
+          {isFile && '    SelectedFile: ' + imageToUpload?.name}
         </div>
+        <p>Name:</p>
+        <input type="text" onChange={descriptionChange} />
+        <p>Category:</p>
+        <select
+          defaultValue={''}
+          name="category"
+          id="category"
+          onChange={categoryChange}
+        >
+          <option value="" disabled>
+            Choose a category...
+          </option>
+          {categoryList.map((category) => (
+            <option key={category} value={category}>
+              {categoryToString(category)}
+            </option>
+          ))}
+        </select>
+        <button onClick={submitImg}>Upload</button>
       </div>
       <style jsx>{`
         input[type='file'] {
