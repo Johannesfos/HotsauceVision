@@ -1,8 +1,11 @@
 import React, { useRef, useState } from 'react'
 import { ImageService } from '../frontend/logic/image_service'
 import { categoryToString, categoryList } from '../frontend/utils/category_util'
+import { useMustAuthenticate } from '../frontend/utils/auth/useUser'
 
 const Dashboard = () => {
+  useMustAuthenticate()
+
   const [imageToUpload, setImageToUpload] = useState<File | null>()
   const [isFile, setIsFile] = useState<boolean>()
   const [description, setDescription] = useState<string>()
