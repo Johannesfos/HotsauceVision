@@ -7,6 +7,7 @@ type Props = {
   images: ImageModel[]
   deleteImageById: (id: string) => void
   openImage: (image: ImageModel) => void
+  toBeDeleted: boolean
 }
 
 export const ImageGallery: FC<Props> = ({

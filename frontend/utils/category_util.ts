@@ -1,10 +1,9 @@
 export const categoryList = [
   'lifestyle',
-  'wedding',
   'concert',
-  'landscape',
-  'food',
-  'portrait',
+  'wedding',
+  'urban',
+  'nature',
 ] as const
 
 export type Category = typeof categoryList[number]

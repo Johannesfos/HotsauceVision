@@ -15,11 +15,10 @@ export class ImageService {
       formData.append('description', description)
 
       const response = await axios.post<ImageModel>('/api/pictures', formData)
-
-      const addedImage = response.data
-      return addedImage
+      console.log(response.status)
+      return true
     } catch (error) {
-      return 'failed'
+      return false
     }
   }
 
