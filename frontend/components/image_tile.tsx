@@ -6,20 +6,13 @@ import { ImageModel } from '../logic/image_model'
 type Props = {
   image: ImageModel
   isLoggedIn: boolean
-  deleteImageById: (id: string) => void
   openImage: (image: ImageModel) => void
 }
 
-export const ImageTile: FC<Props> = ({
-  image,
-  isLoggedIn,
-  deleteImageById,
-  openImage,
-}) => {
+export const ImageTile: FC<Props> = ({ image, isLoggedIn, openImage }) => {
   const [toBeDeleted, settoBeDeleted] = useState<boolean>(false)
 
   const removeImage = () => {
-    deleteImageById(image.id)
     settoBeDeleted(true)
   }
 

@@ -5,16 +5,10 @@ import { ImageTile } from './image_tile'
 
 type Props = {
   images: ImageModel[]
-  deleteImageById: (id: string) => void
   openImage: (image: ImageModel) => void
-  toBeDeleted: boolean
 }
 
-export const ImageGallery: FC<Props> = ({
-  images,
-  deleteImageById,
-  openImage,
-}) => {
+export const ImageGallery: FC<Props> = ({ images, openImage }) => {
   const user = useUser()
   const isSignedIn = user ? true : false
 
@@ -26,7 +20,6 @@ export const ImageGallery: FC<Props> = ({
             image={image}
             key={image.id}
             isLoggedIn={isSignedIn}
-            deleteImageById={deleteImageById}
             openImage={openImage}
           />
         ))}
