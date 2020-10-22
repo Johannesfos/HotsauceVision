@@ -7,9 +7,10 @@ import {
   Category,
 } from '../utils/category_util'
 import { useUploadImage } from './useUploadImage'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
+import Loader from 'react-loader-spinner'
 
 export const DashboardPage = () => {
-  useMustAuthenticate()
   const {
     description,
     status,
@@ -20,9 +21,10 @@ export const DashboardPage = () => {
     setLoading,
     setError,
     setSuccess,
+    setInit,
     inputFile,
   } = useUploadImage()
-
+  const isAuth = useMustAuthenticate()
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const uploadFileHandler = (event: any) => {
@@ -70,11 +72,33 @@ export const DashboardPage = () => {
     setCategory(newCategory)
   }
 
+  const notificationClick = () => {
+    setInit()
+  }
+
   return (
-    <>
+    <div hidden={isAuth === null}>
       <div className="select-file-wrapper">
-        <div hidden={status !== 'success'}>Yaaay! you are a gay</div>
-        <div hidden={status !== 'error'}>Yaaay! you are eror</div>
+        <div hidden={status !== 'success'}>
+          <div className="notification">
+            <h1>Notification</h1>
+            <p>Upload Successed!</p>
+            <p>It will show in maximum 10 Minutes </p>
+            <button className="acknBtn" onClick={notificationClick}>
+              Ok
+            </button>
+          </div>
+        </div>
+        <div hidden={status !== 'error'}>
+          <div className="notification">
+            <h1>Notification</h1>
+            <p>Some error occured!</p>
+            <p>Try again!</p>
+            <button className="acknBtn" onClick={notificationClick}>
+              Ok
+            </button>
+          </div>
+        </div>
         <div className="file-input">
           <input ref={fileInputRef} type="file" onChange={uploadFileHandler} />
           <button onClick={onUploadFile}>Select file:</button>
@@ -101,8 +125,16 @@ export const DashboardPage = () => {
         <button disabled={status !== 'valid'} onClick={submitImg}>
           Upload
         </button>
-        <div hidden={status !== 'loading'}>
-          LOADING!!!.......:!!!!!!"jlijadsøfas
+        <div className="loaderBox">
+          <Loader
+            visible={status == 'loading'}
+            type="Circles"
+            color="FF9A4A"
+            secondaryColor="FF603D"
+            height={70}
+            width={70}
+            timeout={0}
+          />
         </div>
       </div>
       <style jsx>{`
@@ -110,8 +142,46 @@ export const DashboardPage = () => {
           display: none;
         }
 
+        .notification {
+          position: fixed;
+          color: white;
+          background: rgba(12, 10, 120, 0.8);
+          display: flex;
+          border: 1px solid black;
+          flex-direction: column;
+          padding: 15px;
+          bottom: 0;
+          right: 50px;
+          z-index: 2000;
+          transition: all 500ms ease-in;
+        }
+
         .pageStyle {
           margin-left: 50px;
+        }
+
+        .acknBtn {
+          outline: 0;
+          appearance: none;
+          border: 0;
+          cursor: pointer;
+          width: 100px;
+          padding: 10px;
+          background: rgba(12, 10, 200);
+          opacity: 0.5;
+          color: white;
+        }
+
+        .acknBtn :hover {
+          opacity: 1;
+        }
+
+        .loaderBox {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          margin-top: -35;
+          margin-left: -35;
         }
 
         .fileInput {
@@ -122,6 +192,6 @@ export const DashboardPage = () => {
           cursor: pointer;
         }
       `}</style>
-    </>
+    </div>
   )
 }

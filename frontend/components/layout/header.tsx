@@ -19,7 +19,7 @@ export const Header = () => {
           background: #fff;
           position: relative;
           overflow: hidden;
-          max-width: 100vw;
+          width: 100%;
           padding-top: calc(9 / 50 * 100%);
         }
 

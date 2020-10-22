@@ -22,17 +22,21 @@ export const LoginForm = () => {
 
   return (
     <div>
+      <h1>Administration</h1>
       <input
         onChange={onUsernameChange}
         name="username"
         placeholder="Username..."
       />
+      <br />
       <input
         onChange={onPasswordChange}
         name="password"
         placeholder="Password..."
+        type="password"
       />
       <button onClick={onLoginPressed}>Sign In</button>
+      <p>This functionality is only for Hotsauce Vision members.</p>
     </div>
   )
 }

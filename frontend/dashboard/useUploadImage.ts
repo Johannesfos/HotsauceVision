@@ -31,6 +31,9 @@ type Action =
   | {
       type: 'onLoading'
     }
+  | {
+      type: 'init'
+    }
 export const useUploadImage = () => {
   const initialState: State = {
     status: 'init',
@@ -80,6 +83,11 @@ export const useUploadImage = () => {
           ...prevState,
           status: 'error',
         }
+      case 'init':
+        return {
+          ...prevState,
+          status: 'init',
+        }
 
       default:
         return prevState
@@ -108,6 +116,9 @@ export const useUploadImage = () => {
   const setError = () => {
     dispatch({ type: 'error' })
   }
+  const setInit = () => {
+    dispatch({ type: 'init' })
+  }
 
   return {
     setDescription,
@@ -116,6 +127,7 @@ export const useUploadImage = () => {
     setLoading,
     setSuccess,
     setError,
+    setInit,
     description: state.description,
     category: state.category,
     status: state.status,

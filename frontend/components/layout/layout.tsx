@@ -26,7 +26,7 @@ export const Layout: FC = ({ children }) => {
             <Link prefetch href="/video">
               <a>Video</a>
             </Link>
-            <Link prefetch href="/dashboard">
+            <Link href="/dashboard">
               <a>Dashboard</a>
             </Link>
             {isSignedIn && <button onClick={logout}>Sign Out</button>}
@@ -36,10 +36,14 @@ export const Layout: FC = ({ children }) => {
         <Footer />
       </div>
       <style jsx>{`
-        #web {
+        #website {
+          display: flex;
           min-height: 100vh;
+          width: 100%;
           display: flex;
           flex-direction: column;
+          border: 1px solid red;
+          flex-wrap: wrap;
         }
 
         nav {
@@ -65,13 +69,14 @@ export const Layout: FC = ({ children }) => {
           flex: 1;
           padding-top: 15px;
           padding-left: 50px;
+          padding-right: 50px;
+          padding-bottom: 15px;
           font-family: 'tahoma';
         }
 
         footer {
           background: rgb(10, 35, 55);
           height: 30vh;
-          margin-top: 50px;
         }
       `}</style>
       <style jsx global>{`

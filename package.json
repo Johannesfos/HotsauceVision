@@ -12,6 +12,7 @@
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@types/cookie": "^0.4.0",
     "@types/multer": "^1.4.4",
+    "@types/react-loader-spinner": "^3.1.1",
     "axios": "^0.20.0",
     "cookie": "^0.4.1",
     "firebase": "^7.23.0",
@@ -23,6 +24,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-firebaseui": "^4.1.0",
+    "react-loader-spinner": "^3.1.14",
     "uuid-v4": "^0.1.0"
   },
   "devDependencies": {

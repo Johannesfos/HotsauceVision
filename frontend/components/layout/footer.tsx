@@ -36,7 +36,6 @@ export const Footer = () => {
         .footerstyle {
           background: rgb(5, 27, 40);
           margin-top: 100px;
-          width: 100vw;
           position: relative;
         }
 
@@ -46,7 +45,6 @@ export const Footer = () => {
           flex-direction: column;
           margin: 0px;
           height: 200px;
-          width: 100vw;
           justify-content: space-evenly;
           color: white;
           overflow: hidden;
