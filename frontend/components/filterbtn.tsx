@@ -34,8 +34,8 @@ export const FilterBtn: FC<Props> = ({
             color: black;
             border-right: solid black 1px;
             padding: 5px 10px;
+            width: 120px;
             opacity: 0.5;
-            flex: 1 1 auto;
           }
 
           .filterBtn:hover {
@@ -44,7 +44,11 @@ export const FilterBtn: FC<Props> = ({
             cursor: pointer;
           }
 
+          .filterBtn:nth-last-child(2) {
+            border-right: 0;
+          }
           .filterBtn:last-child {
+            border-left: solid black 1px;
             border-right: 0;
           }
 
