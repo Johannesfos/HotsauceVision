@@ -33,9 +33,9 @@ export const FilterBtn: FC<Props> = ({
             background: white;
             color: black;
             border-right: solid black 1px;
-            padding: 15px;
+            padding: 5px 10px;
             opacity: 0.5;
-            flex: 1 0 auto;
+            flex: 1 1 auto;
           }
 
           .filterBtn:hover {

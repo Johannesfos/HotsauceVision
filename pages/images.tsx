@@ -94,12 +94,16 @@ const Images: NextPage<Props> = ({ initimages }) => {
         .wrapper {
           padding-left: 70px;
           padding-right: 70px;
+          display: flex;
+          flex-wrap: wrap;
         }
 
         .btnWrapper {
+          position: absolute;
+          left: 0;
           margin-bottom: 10px;
           margin-top: 10px;
-          max-width: 100%;
+          width: 100%;
           display: flex;
         }
 

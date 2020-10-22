@@ -31,51 +31,7 @@ export const ImageGallery: FC<Props> = ({
         ))}
       </div>
 
-      <style jsx>{`
-        .image_gallery {
-        }
-
-        .delete {
-          position: absolute;
-          line-height: 20px;
-          border-radius: 2px;
-          vertical-align: middle;
-          color: #fff;
-          top: 5px;
-          left: 5px;
-          height: 20px;
-          width: 20px;
-          border: red solid 2px;
-          font: bold;
-          background: red;
-          opacity: 0.8;
-          text-align: center;
-        }
-
-        .delete p:hover {
-          cursor: pointer;
-        }
-
-        .image {
-          position: relative;
-          display: block;
-          overflow: hidden;
-          margin-bottom: 10px;
-        }
-
-        .image img {
-          width: 100% !important;
-          height: auto !important;
-          opacity: 0.85;
-          transform: scale(1);
-          transition: all 0.3s ease-in-out;
-        }
-
-        .image img:hover {
-          opacity: 1;
-          transform: scale(1.05);
-        }
-      `}</style>
+      <style jsx>{``}</style>
     </>
   )
 }
