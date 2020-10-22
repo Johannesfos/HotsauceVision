@@ -29,7 +29,11 @@ export const Layout: FC = ({ children }) => {
             <Link href="/dashboard">
               <a>Dashboard</a>
             </Link>
-            {isSignedIn && <button onClick={logout}>Sign Out</button>}
+            {isSignedIn && (
+              <button className="signOutBtn" onClick={logout}>
+                Sign Out
+              </button>
+            )}
           </nav>
           <main>{children}</main>
           <Footer />
@@ -42,29 +46,46 @@ export const Layout: FC = ({ children }) => {
           display: flex;
           flex-direction: column;
           flex-wrap: wrap;
+          margin: 0;
         }
 
         nav {
           background: rgb(10, 35, 55);
           display: flex;
           justify-content: flex-start;
+          font-family: 'Tahoma';
+          font-size: calc(0.5em + 0.5vw);
         }
 
         nav a {
           color: white;
-          padding: 20px 30px;
+          padding: 10px 20px;
           text-decoration: none;
-          font-family: 'Tahoma';
         }
 
         nav a:hover {
-          background: orange;
-          opacity: 0.8;
+          background: rgba(250, 157, 10, 0.8);
           color: white;
         }
 
+        .signOutBtn {
+          outline: 0;
+          border: 0;
+          appearance: none;
+          color: white;
+          padding: 10px 20px;
+          text-decoration: none;
+          background: rgba(250, 157, 10, 0.5);
+          color: white;
+          font-family: 'Tahoma';
+          font-size: calc(0.7em + 0.2vw);
+        }
+
+        .signOutBtn :hover {
+          background: rgba(250, 157, 10, 0.8);
+        }
+
         main {
-          flex-wrap: wrap;
           padding-top: 15px;
           padding-left: 50px;
           padding-right: 50px;

@@ -42,7 +42,6 @@ const Images: NextPage<Props> = ({ initimages }) => {
       return img.id !== id
     })
     setAllImages(newImages)
-
     if (user) {
       ImageService.deleteImage(id)
     } else {
@@ -62,8 +61,6 @@ const Images: NextPage<Props> = ({ initimages }) => {
       setImages(allImages)
     }
   }, [currentCategory])
-
-  // i18n <- internationalization
 
   return (
     <>

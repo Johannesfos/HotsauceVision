@@ -153,7 +153,8 @@ export const DashboardPage = () => {
           bottom: 0;
           right: 50px;
           z-index: 2000;
-          transition: all 500ms ease-in;
+          transform: opacity(1);
+          transition: all 1s ease-in;
         }
 
         .pageStyle {
