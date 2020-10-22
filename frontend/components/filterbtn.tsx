@@ -35,7 +35,7 @@ export const FilterBtn: FC<Props> = ({
             border-right: solid black 1px;
             padding: 15px;
             opacity: 0.5;
-            flex: 1 100%;
+            flex: 1 0 auto;
           }
 
           .filterBtn:hover {
