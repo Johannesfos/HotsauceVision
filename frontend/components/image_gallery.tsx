@@ -67,7 +67,6 @@ export const ImageGallery: FC<Props> = ({
           width: 100% !important;
           height: auto !important;
           opacity: 0.85;
-
           transform: scale(1);
           transition: all 0.3s ease-in-out;
         }

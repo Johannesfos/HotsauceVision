@@ -99,6 +99,7 @@ const Images: NextPage<Props> = ({ initimages }) => {
         .btnWrapper {
           margin-bottom: 10px;
           margin-top: 10px;
+          max-width: 100%;
           display: flex;
         }
 
