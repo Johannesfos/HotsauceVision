@@ -64,20 +64,19 @@ const Images: NextPage<Props> = ({ initimages }) => {
 
   return (
     <>
+      <div className="btnWrapper">
+        {categoryList.map((category) => {
+          return (
+            <FilterBtn
+              currentSelectedCategory={currentCategory}
+              categoryChange={categoryChange}
+              category={category}
+              key={category}
+            />
+          )
+        })}
+      </div>
       <div className="wrapper">
-        <div className="btnWrapper">
-          {categoryList.map((category) => {
-            return (
-              <FilterBtn
-                currentSelectedCategory={currentCategory}
-                categoryChange={categoryChange}
-                category={category}
-                key={category}
-              />
-            )
-          })}
-        </div>
-
         <div id="gallery">
           <ImageGallery
             images={images}
@@ -99,12 +98,13 @@ const Images: NextPage<Props> = ({ initimages }) => {
         }
 
         .btnWrapper {
-          position: absolute;
-          left: 0;
+          position: relative;
           margin-bottom: 10px;
           margin-top: 10px;
           width: 100%;
           display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
         }
 
         #gallery {
