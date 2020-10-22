@@ -35,8 +35,6 @@ export const Footer = () => {
       <style jsx>{`
         .footerstyle {
           background: rgb(5, 27, 40);
-          margin-top: 100px;
-          position: relative;
         }
 
         .parentbox {

@@ -32,17 +32,15 @@ export const Layout: FC = ({ children }) => {
             {isSignedIn && <button onClick={logout}>Sign Out</button>}
           </nav>
           <main>{children}</main>
+          <Footer />
         </div>
-        <Footer />
       </div>
       <style jsx>{`
         #website {
           display: flex;
-          min-height: 100vh;
           width: 100%;
           display: flex;
           flex-direction: column;
-          border: 1px solid red;
           flex-wrap: wrap;
         }
 
@@ -66,11 +64,11 @@ export const Layout: FC = ({ children }) => {
         }
 
         main {
-          flex: 1;
+          flex-wrap: wrap;
           padding-top: 15px;
           padding-left: 50px;
           padding-right: 50px;
-          padding-bottom: 15px;
+          padding-bottom: 70vh;
           font-family: 'tahoma';
         }
 
