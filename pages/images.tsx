@@ -82,7 +82,11 @@ const Images: NextPage<Props> = ({ initimages }) => {
         </div>
 
         <div id="gallery">
-          <ImageGallery images={images} openImage={openImage} />
+          <ImageGallery
+            images={images}
+            openImage={openImage}
+            deleteImageById={deleteImageById}
+          />
         </div>
         <ImageFullFrame
           image={selectedImage}

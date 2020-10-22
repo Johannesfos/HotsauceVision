@@ -7,13 +7,20 @@ type Props = {
   image: ImageModel
   isLoggedIn: boolean
   openImage: (image: ImageModel) => void
+  deleteImageById: (imageID: string) => void
 }
 
-export const ImageTile: FC<Props> = ({ image, isLoggedIn, openImage }) => {
+export const ImageTile: FC<Props> = ({
+  image,
+  isLoggedIn,
+  openImage,
+  deleteImageById,
+}) => {
   const [toBeDeleted, settoBeDeleted] = useState<boolean>(false)
 
   const removeImage = () => {
     settoBeDeleted(true)
+    deleteImageById(image.id)
   }
 
   const onImageClick = () => {
