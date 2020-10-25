@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ImageGallery } from '../frontend/components/image_gallery'
+import { ImageGallery } from '../frontend/components/picturepage/image_gallery'
 import { ImageService } from '../frontend/logic/image_service'
 import { ImageModel } from '../frontend/logic/image_model'
 import { useUser } from '../frontend/utils/auth/useUser'

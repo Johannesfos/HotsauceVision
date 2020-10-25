@@ -1,7 +1,7 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { FC, useState } from 'react'
-import { ImageModel } from '../logic/image_model'
+import { ImageModel } from '../../logic/image_model'
 
 type Props = {
   image: ImageModel

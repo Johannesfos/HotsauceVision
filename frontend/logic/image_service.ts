@@ -32,7 +32,6 @@ export class ImageService {
 
   static async getAllImages(): Promise<ImageModel[]> {
     const url = `${Constants.BASE_URL}/api/pictures`
-    console.log(url)
     try {
       const response = await axios.get(url)
       const images = response.data

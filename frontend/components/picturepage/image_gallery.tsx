@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import { useUser } from '../utils/auth/useUser'
-import { ImageModel } from '../logic/image_model'
+import { useUser } from '../../utils/auth/useUser'
+import { ImageModel } from '../../logic/image_model'
 import { ImageTile } from './image_tile'
 
 type Props = {
