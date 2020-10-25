@@ -11,12 +11,12 @@ export const Video = () => {
           photos and creating memories.
         </p>
         <VideoTile
-          videoUrl="https://www.youtube.com/watch?v=SS-hCZFB3Ps"
+          videoUrl="https://www.youtube.com/embed/SS-hCZFB3Ps"
           description="This video is from Moillrocks live concert at Young, Oslo 7. februar 2020. It was such an awsome night!"
           tittel="Moillrock live Youngs"
         />
         <VideoTile
-          videoUrl="https://www.youtube.com/watch?v=9qMe8OsrwxE"
+          videoUrl="https://www.youtube.com/embed/9qMe8OsrwxE"
           description="Music video from Moillrocks song Periferi - featuring Inge Bremnes"
           tittel="Moillrock ft. Inge Bremnes - Periferi"
         />
