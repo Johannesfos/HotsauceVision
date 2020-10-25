@@ -41,7 +41,9 @@ const Images: NextPage<Props> = ({ initimages }) => {
     const newImages = allImages.filter((img) => {
       return img.id !== id
     })
+
     setAllImages(newImages)
+
     if (user) {
       ImageService.deleteImage(id)
     } else {
