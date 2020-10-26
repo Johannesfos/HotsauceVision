@@ -45,7 +45,7 @@ handler.post(upload.single('image'), async (req, res) => {
     throw new Error('Missing category')
   }
 
-  const service = new FirebaseImageService()
+  const service = new ImageRepository()
   await service.createImage(image, token, category, description)
   res.json({})
 })
