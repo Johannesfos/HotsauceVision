@@ -1,4 +1,4 @@
-import { Category } from '../utils/category_util'
+import { Category } from '../../utils/category_util'
 
 export interface ImageModel {
   id: string

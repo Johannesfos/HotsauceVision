@@ -1,13 +1,13 @@
 import { Bucket } from '@google-cloud/storage'
 import * as firebase from 'firebase-admin'
-import { ImageModel } from '../frontend/logic/image_model'
-import { createImageModel } from '../frontend/logic/image_model'
+import { ImageModel } from '../../frontend/logic/models/image_model'
+import { createImageModel } from '../../frontend/logic/models/image_model'
 import {
   verifyIdToken,
   initFirebase,
-} from '../frontend/utils/auth/firebaseAdmin'
+} from '../../frontend/utils/auth/firebaseAdmin'
 
-export class FirebaseImageService {
+export class ImageRepository {
   private db: FirebaseFirestore.Firestore
   private bucket: Bucket
 

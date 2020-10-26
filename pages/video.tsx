@@ -1,7 +1,14 @@
+import { GetStaticProps, NextPage } from 'next'
 import React from 'react'
 import { VideoTile } from '../frontend/components/videoPage/videoTile'
+import { VideoModel } from '../frontend/logic/models/video_models'
+import VideoService from '../frontend/logic/services/video_service'
 
-export const Video = () => {
+type Props = {
+  videos: VideoModel[]
+}
+
+export const Video: NextPage<Props> = ({ videos }) => {
   return (
     <>
       <div className="videopage">
@@ -10,26 +17,27 @@ export const Video = () => {
           Hotsaucevision is a team of friends that enjoys making videos, taking
           photos and creating memories.
         </p>
-        <VideoTile
-          videoUrl="https://www.youtube.com/embed/SS-hCZFB3Ps"
-          description="This video is from Moillrocks live concert at Young, Oslo 7. februar 2020. It was such an awsome night!"
-          tittel="Moillrock live Youngs"
-        />
-        <VideoTile
-          videoUrl="https://www.youtube.com/embed/9qMe8OsrwxE"
-          description="Music video from Moillrocks song Periferi - featuring Inge Bremnes"
-          tittel="Moillrock ft. Inge Bremnes - Periferi"
-        />
+        {videos.map((video) => {
+          return <VideoTile video={video} key={video.id} />
+        })}
       </div>
       <style jsx>{`
         .videopage {
           display: flex;
           justify-content: center;
           flex-direction: column;
-          width: 700px;
+          align-items: center;
         }
       `}</style>
     </>
   )
 }
+
 export default Video
+
+export const getStaticProps: GetStaticProps = async () => {
+  const revalidateEveryXMinutes = 10
+  const videos = await VideoService.getVideos()
+
+  return { props: { videos }, revalidate: 60 * revalidateEveryXMinutes }
+}

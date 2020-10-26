@@ -1,6 +1,6 @@
-import { ImageModel } from './image_model'
 import axios from 'axios'
-import { Constants } from '../../shared/constants'
+import { Constants } from '../../../shared/constants'
+import { ImageModel } from '../models/image_model'
 
 export class ImageService {
   static async uploadImage(
@@ -14,8 +14,11 @@ export class ImageService {
       formData.append('category', category)
       formData.append('description', description)
 
-      const response = await axios.post<ImageModel>('/api/pictures', formData)
-      console.log(response.status)
+      await axios.post<ImageModel>(
+        `${Constants.BASE_URL}/api/pictures`,
+        formData
+      )
+
       return true
     } catch (error) {
       return false
@@ -23,8 +26,10 @@ export class ImageService {
   }
 
   static async deleteImage(id: string) {
+    const url = `${Constants.BASE_URL}/api/pictures/${id}`
+
     try {
-      await axios.delete(`${Constants.BASE_URL}/api/pictures/${id}`)
+      await axios.delete(url)
     } catch (error) {
       console.error(error)
     }

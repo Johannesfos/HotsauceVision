@@ -1,4 +1,4 @@
-import { ImageModel } from '../../frontend/logic/image_model'
+import { ImageModel } from '../logic/models/image_model'
 import React, { FC } from 'react'
 import { categoryToString } from '../utils/category_util'
 

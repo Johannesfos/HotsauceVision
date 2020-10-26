@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { ImageGallery } from '../frontend/components/picturepage/image_gallery'
-import { ImageService } from '../frontend/logic/image_service'
-import { ImageModel } from '../frontend/logic/image_model'
+import { ImageModel } from '../frontend/logic/models/image_model'
 import { useUser } from '../frontend/utils/auth/useUser'
 import { FilterBtn } from '../frontend/components/filterbtn'
 import { Category, categoryList } from '../frontend/utils/category_util'
 import { ImageFullFrame } from '../frontend/components/imageFullFrame'
 import { GetStaticProps, NextPage } from 'next'
+import { ImageService } from '../frontend/logic/services/image_service'
 
 type Props = {
   initimages: ImageModel[]
@@ -42,7 +42,12 @@ const Images: NextPage<Props> = ({ initimages }) => {
       return img.id !== id
     })
 
+    const filteredImages = images.filter((img) => {
+      return img.id !== id
+    })
+
     setAllImages(newImages)
+    setImages(filteredImages)
 
     if (user) {
       ImageService.deleteImage(id)

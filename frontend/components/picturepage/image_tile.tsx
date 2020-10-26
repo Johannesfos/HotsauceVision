@@ -1,7 +1,7 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { FC, useState } from 'react'
-import { ImageModel } from '../../logic/image_model'
+import React, { FC } from 'react'
+import { ImageModel } from '../../logic/models/image_model'
 
 type Props = {
   image: ImageModel
@@ -16,10 +16,7 @@ export const ImageTile: FC<Props> = ({
   openImage,
   deleteImageById,
 }) => {
-  const [toBeDeleted, settoBeDeleted] = useState<boolean>(false)
-
   const removeImage = () => {
-    settoBeDeleted(true)
     deleteImageById(image.id)
   }
 
@@ -36,12 +33,6 @@ export const ImageTile: FC<Props> = ({
           </button>
         )}
         <img onClick={onImageClick} src={image.path} />
-        {toBeDeleted && (
-          <div className="deleted-pic">
-            <p>Picture is being deleted.</p>
-            <p>Can take up to 10 minutes for it to not show.</p>
-          </div>
-        )}
       </div>
       <style jsx>{`
         .delete {
