@@ -1,6 +1,6 @@
 import nextConnect from 'next-connect'
 import { getUserFromCookie } from '../../../backend/cookie_util'
-import { FirebaseImageService } from '../../../backend/firebase_image_service'
+import { ImageRepository } from '../../../backend/repositories/image_repository'
 
 // Alle request som kommer til /api/pictures/:id
 
@@ -18,7 +18,7 @@ handler.delete(async (req, res) => {
   try {
     const user = getUserFromCookie(req)
 
-    const service = new FirebaseImageService()
+    const service = new ImageRepository()
     await service.deleteImage(req.query.id, user.token)
 
     res.status(204).end()
