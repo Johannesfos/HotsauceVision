@@ -123,6 +123,7 @@ export const ImageUploader = () => {
           <Dropdown
             onChange={categoryChange}
             placeholder="Choose category..."
+            //@ts-ignore
             value={category}
             selection
             options={categoryList.map((category) => {
