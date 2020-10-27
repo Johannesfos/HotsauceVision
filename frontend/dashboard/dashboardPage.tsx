@@ -7,7 +7,7 @@ import { Button } from 'semantic-ui-react'
 type DashboardNavOps = 'videoUploader' | 'imageUploader' | 'infoPage'
 
 export const DashboardPage = () => {
-  const authenticatedUser = useMustAuthenticate()
+  const { user } = useMustAuthenticate()
 
   const [dashboardPage, setDashboardPage] = useState<DashboardNavOps>(
     'videoUploader'
@@ -16,7 +16,7 @@ export const DashboardPage = () => {
   const changeDashboardNavFunction = (newPage: DashboardNavOps) => () =>
     setDashboardPage(newPage)
 
-  if (!authenticatedUser) {
+  if (!user) {
     return null
   }
 
