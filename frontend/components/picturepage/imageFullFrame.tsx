@@ -1,6 +1,6 @@
-import { ImageModel } from '../logic/models/image_model'
+import { ImageModel } from '../../logic/models/image_model'
 import React, { FC } from 'react'
-import { categoryToString } from '../utils/category_util'
+import { categoryToString } from '../../utils/category_util'
 
 type Props = {
   image: ImageModel | null
@@ -22,7 +22,9 @@ export const ImageFullFrame: FC<Props> = ({ image, onCloseClick }) => {
           <div className="image" onClick={onImageClick}>
             <img src={image.path} />
             <div className="description">
-              {categoryToString(image.category) + ': ' + image.description}
+              <p>Photo by {image.author}</p>
+              <p>Category: {categoryToString(image.category)}</p>
+              <p>Description: {image.description}</p>
             </div>
           </div>
 

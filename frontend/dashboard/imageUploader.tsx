@@ -7,14 +7,19 @@ import {
   Category,
 } from '../utils/category_util'
 import { ImageService } from '../logic/services/image_service'
-import { useMustAuthenticate } from '../utils/auth/useUser'
 import { useUploadImage } from './useUploadImage'
+import { HSVInput } from '../components/common/HSVInput'
+import { Button, DropdownProps } from 'semantic-ui-react'
+import { Dropdown } from 'semantic-ui-react'
+import { HSVNotification } from '../components/common/HSVNotification'
 
 export const ImageUploader = () => {
   const {
     description,
     status,
     category,
+    author,
+    setAuthor,
     setDescription,
     setCategory,
     setImageFile,
@@ -24,18 +29,17 @@ export const ImageUploader = () => {
     setInit,
     inputFile,
   } = useUploadImage()
-  const isAuth = useMustAuthenticate()
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const uploadFileHandler = (event: any) => {
     const image = event.target.files[0]
-
     try {
-      if (image.name.length > 2) {
+      if (image) {
         setImageFile(image)
       }
     } catch (error) {
-      setImageFile(null)
+      setImageFile('')
+      console.log({ image })
     }
   }
 
@@ -53,7 +57,8 @@ export const ImageUploader = () => {
         //@ts-ignore
         inputFile,
         category,
-        description
+        description,
+        author
       )
 
       if (!didSucceed) {
@@ -64,11 +69,11 @@ export const ImageUploader = () => {
     }
   }
 
-  const descriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDescription(event.target.value)
-  }
-  const categoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newCategory = event.target.value as Category
+  const categoryChange = (
+    _: React.SyntheticEvent<HTMLElement, Event>,
+    { value }: DropdownProps
+  ) => {
+    const newCategory = value as Category
     setCategory(newCategory)
   }
 
@@ -76,59 +81,64 @@ export const ImageUploader = () => {
     setInit()
   }
 
-  if (!isAuth) {
-    return null
-  }
-
+  console.log({ category, inputFile })
   return (
     <div>
       <div className="select-file-wrapper">
+        <h1>Image Uploader</h1>
         <div hidden={status !== 'success'}>
-          <div className="notification">
-            <h1>Notification</h1>
-            <p>Upload Successed!</p>
-            <p>It will show in maximum 10 Minutes </p>
-            <button className="acknBtn" onClick={notificationClick}>
-              Ok
-            </button>
-          </div>
+          <HSVNotification
+            btnText="Ok"
+            header="Upload Succeded!"
+            onClick={notificationClick}
+            message="Image will be shown in 10 minutes!"
+          />
         </div>
         <div hidden={status !== 'error'}>
-          <div className="notification">
-            <h1>Notification</h1>
-            <p>Some error occured!</p>
-            <p>Try again!</p>
-            <button className="acknBtn" onClick={notificationClick}>
-              Ok
-            </button>
-          </div>
+          <HSVNotification
+            btnText="Try Again!"
+            header="Something went wrong"
+            onClick={notificationClick}
+            message="Try again later, or contact IT-support,"
+          />
         </div>
-        <div className="file-input">
+
+        <div>
           <input ref={fileInputRef} type="file" onChange={uploadFileHandler} />
-          <button onClick={onUploadFile}>Select file:</button>
+          <Button onClick={onUploadFile}>Select file:</Button>
+          <span>
+            {inputFile !== '' ? '  Selected File: ' + inputFile.name : ''}
+          </span>
         </div>
-        <p>Name:</p>
-        <input type="text" value={description} onChange={descriptionChange} />
-        <p>Category:</p>
-        <select
-          defaultValue={''}
-          value={category}
-          name="category"
-          id="category"
-          onChange={categoryChange}
-        >
-          <option value="" disabled>
-            Choose a category...
-          </option>
-          {categoryList.map((category) => (
-            <option key={category} value={category}>
-              {categoryToString(category)}
-            </option>
-          ))}
-        </select>
-        <button disabled={status !== 'valid'} onClick={submitImg}>
+        <br />
+
+        <HSVInput
+          label="Description"
+          value={description}
+          onChange={setDescription}
+        />
+        <HSVInput label="Photograph by" value={author} onChange={setAuthor} />
+        <div>
+          <p>Category:</p>
+          <Dropdown
+            onChange={categoryChange}
+            placeholder="Choose category..."
+            value={category}
+            selection
+            options={categoryList.map((category) => {
+              return {
+                key: category,
+                text: categoryToString(category),
+                value: category,
+              }
+            })}
+          ></Dropdown>
+        </div>
+        <br />
+
+        <Button primary disabled={status !== 'valid'} onClick={submitImg}>
           Upload
-        </button>
+        </Button>
         <div className="loaderBox">
           <Loader
             visible={status == 'loading'}
@@ -144,21 +154,6 @@ export const ImageUploader = () => {
       <style jsx>{`
         input[type='file'] {
           display: none;
-        }
-
-        .notification {
-          position: fixed;
-          color: white;
-          background: rgba(12, 10, 120, 0.8);
-          display: flex;
-          border: 1px solid black;
-          flex-direction: column;
-          padding: 15px;
-          bottom: 0;
-          right: 50px;
-          z-index: 2000;
-          transform: opacity(1);
-          transition: all 1s ease-in;
         }
 
         .pageStyle {

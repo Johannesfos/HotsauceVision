@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import VideoService from '../logic/services/video_service'
 import { VideoModel } from '../logic/models/video_models'
 import Loader from 'react-loader-spinner'
+import { HSVInput } from '../components/common/HSVInput'
+import { Button } from 'semantic-ui-react'
 
 export const VideoUploader = () => {
   const [title, setTitle] = useState<string>()
@@ -10,18 +12,6 @@ export const VideoUploader = () => {
   const [error, setError] = useState<string>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const onTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value)
-  }
-
-  const onUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUrl(event.target.value)
-  }
-  const onDescriptionChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setDescription(event.target.value)
-  }
   const onSubmit = async () => {
     //send en videoModel
     if (!title || !description || !url) {
@@ -52,27 +42,14 @@ export const VideoUploader = () => {
   return (
     <>
       <div className="video-upload-wrapper">
-        <h1>VideoUploader</h1>
-        <p>Title</p>
-        <input
-          type="text"
-          value={title}
-          placeholder="write a tasty title for you video..."
-          onChange={onTitleChange}
-        />
-        <p>videoUrl</p>
-        <input
-          type="text"
-          value={url}
-          placeholder="Paste in youtubeLink..."
-          onChange={onUrlChange}
-        />
-        <p>Description</p>
-        <textarea
+        <h1>Video Uploader</h1>
+        <HSVInput label="Title" value={title} onChange={setTitle} />
+        <HSVInput label="Video url" value={url} onChange={setUrl} />
+        <HSVInput
+          label="Description"
           value={description}
-          placeholder="Max 500 characters..."
-          maxLength={500}
-          onChange={onDescriptionChange}
+          onChange={setDescription}
+          textarea={true}
         />
         <div className="loaderBox">
           <Loader
@@ -85,9 +62,10 @@ export const VideoUploader = () => {
             timeout={0}
           />
         </div>
-        <button disabled={isLoading} onClick={onSubmit}>
+        <br />
+        <Button primary disabled={isLoading} onClick={onSubmit}>
           Upload
-        </button>
+        </Button>
       </div>
       <style jsx>{`
         .video-upload-wrapper  {

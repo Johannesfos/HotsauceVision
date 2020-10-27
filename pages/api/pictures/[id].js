@@ -17,7 +17,7 @@ handler.delete(async (req, res) => {
   //få en referanse til database
   try {
     const user = getUserFromCookie(req)
-
+    console.log('images is being deleted')
     const service = new ImageRepository()
     await service.deleteImage(req.query.id, user.token)
 

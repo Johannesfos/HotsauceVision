@@ -37,7 +37,8 @@ export class ImageRepository {
           doc.id,
           rawData.url,
           rawData.category,
-          rawData.description
+          rawData.description,
+          rawData.author
         )
         imgArr.push(imageModel)
       })
@@ -51,7 +52,8 @@ export class ImageRepository {
     file: Express.Multer.File,
     token: string,
     category: string,
-    description: string
+    description: string,
+    author: string
   ) {
     try {
       await verifyIdToken(token)
@@ -70,6 +72,7 @@ export class ImageRepository {
         url: result.url,
         category: category,
         description: description,
+        author: author,
       })
     } catch (error) {
       console.error({ error })

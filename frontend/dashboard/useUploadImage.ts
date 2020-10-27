@@ -2,11 +2,12 @@ import { Reducer, useReducer } from 'react'
 import { Category } from '../utils/category_util'
 
 type State = {
-  inputFile: File | null
-  description?: string
-  category?: Category
+  inputFile: File | ''
+  description: string
+  category: Category | null
   status: 'init' | 'valid' | 'loading' | 'success' | 'error'
   error?: string
+  author: string
 }
 
 type Action =
@@ -16,11 +17,15 @@ type Action =
     }
   | {
       type: 'changeCategory'
-      payload: Category
+      payload: Category | null
     }
   | {
       type: 'changeImageFile'
-      payload: File | null
+      payload: File | ''
+    }
+  | {
+      type: 'changeAuthor'
+      payload: string
     }
   | {
       type: 'success'
@@ -37,10 +42,15 @@ type Action =
 export const useUploadImage = () => {
   const initialState: State = {
     status: 'init',
-    inputFile: null,
+    inputFile: '',
+    author: '',
+    category: null,
+    description: '',
   }
   const isReadytoSubmit = (state: State) => {
-    if (state.description && state.category && state.inputFile) return true
+    console.log(state)
+    if (state.description && state.category && state.inputFile && state.author)
+      return true
     else return false
   }
 
@@ -70,13 +80,20 @@ export const useUploadImage = () => {
           ...prevState,
           status: 'loading',
         }
+      case 'changeAuthor':
+        newState = { ...prevState, author: action.payload }
+        return {
+          ...newState,
+          status: isReadytoSubmit(newState) ? 'valid' : 'init',
+        }
       case 'success':
         return {
           ...prevState,
           status: 'success',
           description: '',
-          inputFile: null,
-          category: undefined,
+          inputFile: '',
+          author: '',
+          category: null,
         }
       case 'error':
         return {
@@ -100,15 +117,19 @@ export const useUploadImage = () => {
     dispatch({ type: 'changeDescription', payload: newDescription })
   }
 
-  const setImageFile = (newImageFile: File | null) => {
+  const setImageFile = (newImageFile: File | '') => {
+    console.log(newImageFile)
     dispatch({ type: 'changeImageFile', payload: newImageFile })
   }
 
-  const setCategory = (newCategory: Category) => {
+  const setCategory = (newCategory: Category | null) => {
     dispatch({ type: 'changeCategory', payload: newCategory })
   }
   const setLoading = () => {
     dispatch({ type: 'onLoading' })
+  }
+  const setAuthor = (newAuthor: string) => {
+    dispatch({ type: 'changeAuthor', payload: newAuthor })
   }
   const setSuccess = () => {
     dispatch({ type: 'success' })
@@ -128,9 +149,11 @@ export const useUploadImage = () => {
     setSuccess,
     setError,
     setInit,
+    setAuthor,
     description: state.description,
     category: state.category,
     status: state.status,
     inputFile: state.inputFile,
+    author: state.author,
   }
 }

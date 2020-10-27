@@ -34,6 +34,7 @@ handler.post(upload.single('image'), async (req, res) => {
   const token = user.token
   const description = req.body.description
   const category = req.body.category
+  const author = req.body.author
 
   if (!token) {
     throw new Error('No auth token')
@@ -46,7 +47,7 @@ handler.post(upload.single('image'), async (req, res) => {
   }
 
   const service = new ImageRepository()
-  await service.createImage(image, token, category, description)
+  await service.createImage(image, token, category, description, author)
   res.json({})
 })
 

@@ -9,7 +9,7 @@ export const categoryList = [
 export type Category = typeof categoryList[number]
 
 export const categoryToString = (category: Category) => {
-  return capitalize(category)
+  if (category) return capitalize(category)
 }
 
 const capitalize = (s: string) => {

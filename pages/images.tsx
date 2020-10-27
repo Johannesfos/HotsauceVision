@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { ImageGallery } from '../frontend/components/picturepage/image_gallery'
 import { ImageModel } from '../frontend/logic/models/image_model'
 import { useUser } from '../frontend/utils/auth/useUser'
-import { FilterBtn } from '../frontend/components/filterbtn'
+import { FilterBtn } from '../frontend/components/picturepage/filterbtn'
 import { Category, categoryList } from '../frontend/utils/category_util'
-import { ImageFullFrame } from '../frontend/components/imageFullFrame'
+import { ImageFullFrame } from '../frontend/components/picturepage/imageFullFrame'
 import { GetStaticProps, NextPage } from 'next'
 import { ImageService } from '../frontend/logic/services/image_service'
 
@@ -137,7 +137,7 @@ const Images: NextPage<Props> = ({ initimages }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const revalidateEveryXMinutes = 10
+  const revalidateEveryXMinutes = 5
   const initimages = await ImageService.getAllImages()
 
   return { props: { initimages }, revalidate: 60 * revalidateEveryXMinutes }

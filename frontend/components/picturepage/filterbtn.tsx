@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Category, categoryToString } from '../utils/category_util'
+import { Category, categoryToString } from '../../utils/category_util'
 
 type Props = {
   currentSelectedCategory?: Category | null

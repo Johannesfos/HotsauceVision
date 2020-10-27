@@ -6,13 +6,15 @@ export class ImageService {
   static async uploadImage(
     imgFile: File,
     category: string,
-    description: string
+    description: string,
+    author: string
   ) {
     try {
       const formData = new FormData()
       formData.append('image', imgFile)
       formData.append('category', category)
       formData.append('description', description)
+      formData.append('author', author)
 
       await axios.post<ImageModel>(
         `${Constants.BASE_URL}/api/pictures`,

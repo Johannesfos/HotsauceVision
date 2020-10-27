@@ -53,7 +53,6 @@ export const Layout: FC = ({ children }) => {
           background: rgb(10, 35, 55);
           display: flex;
           justify-content: flex-start;
-          font-family: 'Tahoma';
           font-size: calc(0.5em + 0.5vw);
         }
 
@@ -77,7 +76,6 @@ export const Layout: FC = ({ children }) => {
           text-decoration: none;
           background: rgba(250, 157, 10, 0.5);
           color: white;
-          font-family: 'Tahoma';
           font-size: calc(0.7em + 0.2vw);
         }
 
@@ -90,7 +88,6 @@ export const Layout: FC = ({ children }) => {
           padding-left: 50px;
           padding-right: 50px;
           padding-bottom: 70vh;
-          font-family: 'tahoma';
         }
 
         footer {
@@ -102,6 +99,7 @@ export const Layout: FC = ({ children }) => {
         body {
           margin: 0;
           padding: 0;
+          font-family: 'Lato', sans-serif;
         }
       `}</style>
     </>
