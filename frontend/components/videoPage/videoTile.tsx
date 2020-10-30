@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react'
-import { Button } from 'semantic-ui-react'
 import { VideoModel } from '../../logic/models/video_models'
 import { Thumbnail } from './thumbnail'
 import { VideoPlay } from './videoPlay'
