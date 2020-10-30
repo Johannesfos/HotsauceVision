@@ -31,7 +31,7 @@ export const Thumbnail: FC<Props> = ({ imgUrl, onPlayHandler }) => {
 
         .thumbnail-img {
           display: block;
-          margin-top: -45px;
+          margin-top: -36px;
         }
         .play-button {
           position: absolute;
@@ -46,6 +46,20 @@ export const Thumbnail: FC<Props> = ({ imgUrl, onPlayHandler }) => {
 
         .play-button:hover {
           opacity: 1;
+        }
+
+        @media only screen and (max-width: 600px) {
+          .thumbnail {
+          height: 216px;
+          width:384px;
+         
+        }
+        .play-button {
+          top: 83px;
+          left: 167px;
+        }
+        }
+        
         }
       `}</style>
     </>
