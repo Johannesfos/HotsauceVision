@@ -50,8 +50,8 @@ export const Thumbnail: FC<Props> = ({ imgUrl, onPlayHandler }) => {
 
         @media only screen and (max-width: 600px) {
           .thumbnail {
-          height: calc(90%*0.5625);
-          width:90%;
+          height: calc(90vw*0.5625);
+          width:90vw;
          
         }
         .play-button {

@@ -42,11 +42,12 @@ export const VideoPlay: FC<Props> = ({ videoId }) => {
         @media only screen and (max-width: 600px) {
           .video-box {
             position: relative;
-            height: calc(90% * 0.5625);
-            width: 90%;
+            height: calc(90vw * 0.5625);
+            width: 90vw;
             overflow: hidden;
             opacity: 0.95;
             transition: opacity 1s;
+            border: 1px red solid;
           }
         }
       `}</style>
