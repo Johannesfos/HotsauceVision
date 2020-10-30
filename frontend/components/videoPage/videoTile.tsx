@@ -18,22 +18,31 @@ export const VideoTile: FC<Props> = ({
   deleteVideoById,
 }) => {
   const [onPlay, setOnPlay] = useState<Boolean>(false)
-  const [onReadMore, setOnReadMore] = useState<Boolean>(false)
+  const [onMouseOver, setOnMouseOver] = useState<Boolean>(false)
   const onPlayHandler = () => {
     setOnPlay(!onPlay)
   }
 
-  const onReadMoreClick = () => {
-    setOnReadMore(!onReadMore)
-  }
   const deleteClickHandler = () => {
     deleteVideoById(video.id)
+  }
+
+  const onMouseEnter = () => {
+    setOnMouseOver(true)
+  }
+
+  const onMouseLeave = () => {
+    setOnMouseOver(false)
   }
 
   return (
     <>
       <div className="video-tile">
-        <div className="video-box">
+        <div
+          className="video-box"
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+        >
           {!onPlay ? (
             <Thumbnail onPlayHandler={onPlayHandler} imgUrl={video.imgUrl} />
           ) : (
@@ -44,16 +53,9 @@ export const VideoTile: FC<Props> = ({
               <FontAwesomeIcon icon={faTimes} size={'2x'} />
             </button>
           )}
+          {onMouseOver && <p className="description">{video.description}</p>}
         </div>
         <p className="title">{video.title}</p>
-        {!onReadMore ? (
-          <Button icon="angle down" size="mini" onClick={onReadMoreClick} />
-        ) : (
-          <Button icon="angle up" size="mini" onClick={onReadMoreClick} />
-        )}
-        <div className="description-wrap">
-          {onReadMore && <p className="description">{video.description}</p>}
-        </div>
       </div>
 
       <style jsx>{`
@@ -75,22 +77,16 @@ export const VideoTile: FC<Props> = ({
           position: relative;
         }
 
-        .description-wrap {
-          position: relative;
-          margin: 2px;
-        }
-
         .description {
           position: absolute;
-          left: -240px;
-          top: 0;
+          bottom: 0;
+          left: 0;
           width: 480px;
           padding: 10px;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-          text-align: center;
           height: auto;
-          background: white;
-          z-index: 3000;
+          background: rgba(0, 0, 0, 0.4);
+          color: white;
+          z-index: 900;
           animation: fadeIn 0.8s forwards;
         }
 
