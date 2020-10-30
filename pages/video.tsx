@@ -1,14 +1,41 @@
 import { GetStaticProps, NextPage } from 'next'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { VideoTile } from '../frontend/components/videoPage/videoTile'
 import { VideoModel } from '../frontend/logic/models/video_models'
 import VideoService from '../frontend/logic/services/video_service'
+import { useUser } from '../frontend/utils/auth/useUser'
 
 type Props = {
   videos: VideoModel[]
 }
 
 export const Video: NextPage<Props> = ({ videos }) => {
+  //if logged in, possibility to delete videos
+  const [isSignedIn, setIsSignedIn] = useState<boolean>(true)
+  const [allVideos, setAllVideos] = useState<VideoModel[]>(videos)
+
+  const user = useUser()
+
+  const deleteVideoById = async (id: string) => {
+    const newVideos = allVideos.filter((video) => {
+      return video.id !== id
+    })
+    setAllVideos(newVideos)
+    if (user) {
+      VideoService.deleteVideo(id)
+    } else {
+      console.error('user not signed in')
+    }
+  }
+
+  useEffect(() => {
+    if (user) {
+      setIsSignedIn(true)
+    } else {
+      setIsSignedIn(false)
+    }
+  })
+
   return (
     <>
       <div className="videopage">
@@ -17,8 +44,17 @@ export const Video: NextPage<Props> = ({ videos }) => {
           Hotsaucevision is a team of friends that enjoys making videos, taking
           photos and creating memories.
         </p>
-        {videos.map((video) => {
-          return <VideoTile video={video} key={video.id} />
+      </div>
+      <div className="video-tiles">
+        {allVideos.map((video) => {
+          return (
+            <VideoTile
+              deleteVideoById={deleteVideoById}
+              isSignedIn={isSignedIn}
+              video={video}
+              key={video.id}
+            />
+          )
         })}
       </div>
       <style jsx>{`
@@ -27,6 +63,13 @@ export const Video: NextPage<Props> = ({ videos }) => {
           justify-content: center;
           flex-direction: column;
           align-items: center;
+        }
+        .video-tiles {
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: 50px;
+          flex-direction: row;
+          justify-content: space-evenly;
         }
       `}</style>
     </>

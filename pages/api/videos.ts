@@ -20,13 +20,15 @@ handler.post(async (req, res) => {
 
   validateRequest(req.body, user)
 
-  const url: string = req.body.url
-  const newUrl = url.replace('watch?v=', 'embed/')
+  const videoId: string = req.body.videoId
+  const newUrl = `https://www.youtube.com/embed/${videoId}`
+  const imgUrl = `https://img.youtube.com/vi/${videoId}/0.jpg`
 
   const videoModel: Omit<VideoModel, 'id'> = {
-    url: newUrl,
+    videoId: newUrl,
     description: req.body.description,
     title: req.body.title,
+    imgUrl: imgUrl,
   }
   const service = new VideoRepository()
   const videoObject = await service.saveVideo(videoModel)
@@ -35,14 +37,12 @@ handler.post(async (req, res) => {
 })
 
 const validateRequest = (body: any, user: any) => {
-  const url: string = body.url
+  const videoId: string = body.videoId
 
   if (!user) {
     throw new Error('Not authenticated')
-  } else if (!body.url) {
+  } else if (!videoId) {
     throw new Error('Missing url in request')
-  } else if (!url.includes('youtube')) {
-    throw new Error('Has to be Youtube-Link')
   } else if (!body.description) {
     throw new Error('Missing description')
   } else if (!body.title) {

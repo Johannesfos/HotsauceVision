@@ -5,6 +5,7 @@ type Props = {
   value?: string
   placeholder?: string
   textarea?: boolean
+  maxLength?: number
   onChange: (newValue: string) => void
 }
 
@@ -14,6 +15,7 @@ export const HSVInput: FC<Props> = ({
   onChange,
   placeholder,
   textarea,
+  maxLength,
 }) => {
   const onInputChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -35,6 +37,7 @@ export const HSVInput: FC<Props> = ({
         ) : (
           <input
             type="text"
+            maxLength={maxLength}
             className="input-field"
             placeholder={placeholder}
             value={value}

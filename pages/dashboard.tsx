@@ -1,5 +1,5 @@
 import React from 'react'
-import { DashboardPage } from '../frontend/dashboard/dashboardPage'
+import { DashboardPage } from '../frontend/components/dashboard/dashboardPage'
 
 const Dashboard = () => {
   return <DashboardPage />

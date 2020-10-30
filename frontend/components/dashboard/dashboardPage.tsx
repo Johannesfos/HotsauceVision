@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ImageUploader } from './imageUploader'
 import { VideoUploader } from './videoUploader'
-import { useMustAuthenticate } from '../utils/auth/useUser'
+import { useMustAuthenticate } from '../../utils/auth/useUser'
 import { Button } from 'semantic-ui-react'
 
 type DashboardNavOps = 'videoUploader' | 'imageUploader' | 'infoPage'

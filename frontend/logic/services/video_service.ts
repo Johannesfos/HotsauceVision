@@ -17,9 +17,22 @@ export default class VideoService {
     }
   }
 
-  static uploadVideo = async (videoModel: Omit<VideoModel, 'id'>) => {
+  static async deleteVideo(id: string) {
+    const url = `${Constants.BASE_URL}/api/videos/${id}`
+
+    try {
+      await axios.delete(url)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  static uploadVideo = async (
+    videoModel: Omit<VideoModel, 'id' | 'imgUrl'>
+  ) => {
     // upload video thorugh api
     try {
+      console.log(videoModel)
       const url = `${Constants.BASE_URL}/api/videos`
       const response = await axios.post<VideoModel>(url, videoModel)
       console.log(response.status)
@@ -28,6 +41,4 @@ export default class VideoService {
       return false
     }
   }
-
-  static deleteVideo = () => {}
 }

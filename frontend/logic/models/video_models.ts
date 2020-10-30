@@ -2,5 +2,6 @@ export interface VideoModel {
   id: string
   description: string
   title: string
-  url: string
+  videoId: string
+  imgUrl: string
 }

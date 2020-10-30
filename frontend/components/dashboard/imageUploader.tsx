@@ -5,13 +5,13 @@ import {
   categoryToString,
   categoryList,
   Category,
-} from '../utils/category_util'
-import { ImageService } from '../logic/services/image_service'
+} from '../../utils/category_util'
+import { ImageService } from '../../logic/services/image_service'
 import { useUploadImage } from './useUploadImage'
-import { HSVInput } from '../components/common/HSVInput'
+import { HSVInput } from '../common/HSVInput'
 import { Button, DropdownProps } from 'semantic-ui-react'
 import { Dropdown } from 'semantic-ui-react'
-import { HSVNotification } from '../components/common/HSVNotification'
+import { HSVNotification } from '../common/HSVNotification'
 
 export const ImageUploader = () => {
   const {

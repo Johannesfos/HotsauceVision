@@ -45,8 +45,8 @@ export const ImageTile: FC<Props> = ({
           justify-content: center;
           align-items: center;
           border-radius: 50%;
-          width: 50px;
-          height: 50px;
+          width: 30px;
+          height: 30px;
           color: #fff;
           top: 20px;
           right: 20px;

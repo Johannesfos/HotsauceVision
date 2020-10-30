@@ -1,27 +1,27 @@
 import React, { useState } from 'react'
-import VideoService from '../logic/services/video_service'
-import { VideoModel } from '../logic/models/video_models'
+import VideoService from '../../logic/services/video_service'
+import { VideoModel } from '../../logic/models/video_models'
 import Loader from 'react-loader-spinner'
-import { HSVInput } from '../components/common/HSVInput'
+import { HSVInput } from '../common/HSVInput'
 import { Button } from 'semantic-ui-react'
 
 export const VideoUploader = () => {
   const [title, setTitle] = useState<string>()
-  const [url, setUrl] = useState<string>()
+  const [videoId, setVideoId] = useState<string>()
   const [description, setDescription] = useState<string>()
   const [error, setError] = useState<string>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const onSubmit = async () => {
     //send en videoModel
-    if (!title || !description || !url) {
+    if (!title || !description || !videoId) {
       return setError('Something is missing.')
     }
 
-    const videoModel: Omit<VideoModel, 'id'> = {
+    const videoModel: Omit<VideoModel, 'id' | 'imgUrl'> = {
       description,
       title,
-      url,
+      videoId,
     }
     setIsLoading(true)
     const didSucceed = await VideoService.uploadVideo(videoModel)
@@ -34,7 +34,7 @@ export const VideoUploader = () => {
       setError('')
       setDescription('')
       setTitle('')
-      setUrl('')
+      setVideoId('')
       console.log('nå skal det være tomt i alle inputs')
     }
   }
@@ -43,13 +43,25 @@ export const VideoUploader = () => {
     <>
       <div className="video-upload-wrapper">
         <h1>Video Uploader</h1>
-        <HSVInput label="Title" value={title} onChange={setTitle} />
-        <HSVInput label="Video url" value={url} onChange={setUrl} />
+        <HSVInput
+          maxLength={49}
+          label="Title"
+          value={title}
+          onChange={setTitle}
+          placeholder="Place a juicy title here..."
+        />
+        <HSVInput
+          label="Video Id"
+          value={videoId}
+          onChange={setVideoId}
+          placeholder="ONLY YoutubeVideo ID here..."
+        />
         <HSVInput
           label="Description"
           value={description}
           onChange={setDescription}
           textarea={true}
+          placeholder="Place description here..."
         />
         <div className="loaderBox">
           <Loader

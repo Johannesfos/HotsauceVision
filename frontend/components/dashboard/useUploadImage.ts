@@ -1,5 +1,5 @@
 import { Reducer, useReducer } from 'react'
-import { Category } from '../utils/category_util'
+import { Category } from '../../utils/category_util'
 
 type State = {
   inputFile: File | ''

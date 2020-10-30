@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useUserMethods } from '../utils/auth/useUser'
+import { useUserMethods } from '../../utils/auth/useUser'
 import { Button } from 'semantic-ui-react'
 
 export const LoginForm = () => {
