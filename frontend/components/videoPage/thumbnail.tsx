@@ -29,11 +29,11 @@ export const Thumbnail: FC<Props> = ({ imgUrl, onPlayHandler }) => {
           left: 0;
           bottom: 0;
           right: 0;
-          height: 50px;
-          width: 50px;
+          height: 60px;
+          width: 60px;
           z-index: 100;
-          opacity: 0.7;
-          transition: opacity 0.5s ease-out;
+          opacity: 0.8;
+          transition: opacity 0.2s ease-out;
         }
 
         .play-button:hover {

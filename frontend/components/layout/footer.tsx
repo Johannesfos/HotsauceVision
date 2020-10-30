@@ -34,7 +34,7 @@ export const Footer = () => {
       </div>
       <style jsx>{`
         .footerstyle {
-          background: rgb(5, 27, 40);
+          background: linear-gradient(black, rgba(241, 90, 36, 0.8));
         }
 
         .parentbox {

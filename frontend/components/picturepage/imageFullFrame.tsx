@@ -47,13 +47,17 @@ export const ImageFullFrame: FC<Props> = ({ image, onCloseClick }) => {
           }
 
           .image {
+            position: relative;
             max-width: 40vw;
             border-radius: 10px;
             overflow: hidden;
           }
 
           .description {
-            background: white;
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: black;
             text-align: center;
             padding: 15px;
           }

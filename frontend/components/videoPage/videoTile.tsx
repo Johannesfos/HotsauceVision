@@ -63,8 +63,7 @@ export const VideoTile: FC<Props> = ({
           flex-direction: column;
           flex-wrap: wrap;
           align-items: center;
-          width: 500px;
-          margin-bottom: 20px;
+          margin: 60px;
         }
         .title {
           font-weight: 300;

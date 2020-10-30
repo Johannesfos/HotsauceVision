@@ -50,7 +50,7 @@ export const HSVInput: FC<Props> = ({
           appearance: none;
           border: 0;
           outline: 0;
-          background: rgba(0, 0, 0, 0);
+          background: rgba(255, 255, 255);
           height: 30px;
           width: 60%;
           border-radius: 10px;
@@ -71,11 +71,11 @@ export const HSVInput: FC<Props> = ({
           padding: 5px;
           border: 0;
           outline: 0;
-          background: rgba(0, 0, 0, 0);
+          background: rgba(255, 255, 255);
           height: 100px;
           width: 60%;
           border-radius: 10px;
-          border: 1px solid rgba(0, 0, 0, 0.2);
+          border: 1px solid rgba(255, 255, 255, 0.2);
           transition: border 0.3s;
           resize: none;
           margin-bottom: 10px;

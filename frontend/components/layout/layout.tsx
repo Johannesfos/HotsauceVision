@@ -50,10 +50,13 @@ export const Layout: FC = ({ children }) => {
         }
 
         nav {
-          background: rgb(10, 35, 55);
+          background: black;
           display: flex;
           justify-content: flex-start;
           font-size: calc(0.5em + 0.5vw);
+          position: fixed;
+          top: 0;
+          z-index: 12000;
         }
 
         nav a {
@@ -63,7 +66,7 @@ export const Layout: FC = ({ children }) => {
         }
 
         nav a:hover {
-          background: rgba(250, 157, 10, 0.8);
+          background: rgba(247, 147, 30, 0.8);
           color: white;
         }
 
@@ -89,17 +92,15 @@ export const Layout: FC = ({ children }) => {
           padding-right: 50px;
           padding-bottom: 70vh;
         }
-
-        footer {
-          background: rgb(10, 35, 55);
-          height: 30vh;
-        }
       `}</style>
       <style jsx global>{`
         body {
           margin: 0;
           padding: 0;
           font-family: 'Lato', sans-serif;
+          color: white;
+          background: black;
+          font-weight: 500;
         }
       `}</style>
     </>

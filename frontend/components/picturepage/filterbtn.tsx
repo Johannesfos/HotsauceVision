@@ -30,8 +30,8 @@ export const FilterBtn: FC<Props> = ({
             appearance: none;
             outline: 0;
             border: 0;
-            background: white;
-            color: black;
+            background: black;
+            color: white;
             border-right: solid black 1px;
             padding: 5px 10px;
             width: 120px;
@@ -40,7 +40,7 @@ export const FilterBtn: FC<Props> = ({
 
           .filterBtn:hover {
             opacity: 1;
-            background: linear-gradient(#fff, #f4f4f4);
+            background: rgba(241, 90, 36, 0.5);
             cursor: pointer;
           }
 
@@ -53,9 +53,8 @@ export const FilterBtn: FC<Props> = ({
           }
 
           .active {
-            background: linear-gradient(#fff, #f4f4f4);
+            background: rgba(241, 90, 36, 0.8);
             opacity: 1;
-            box-shadow: 0px 1px 0px 0px #f4f4f4;
           }
         `}
       </style>
