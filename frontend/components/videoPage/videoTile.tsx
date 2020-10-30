@@ -70,6 +70,7 @@ export const VideoTile: FC<Props> = ({
           font-weight: 300;
           font-size: 30px;
           line-height: 30px;
+          width: 97%;
         }
 
         .video-box {
@@ -78,7 +79,7 @@ export const VideoTile: FC<Props> = ({
 
         .description {
           position: absolute;
-          bottom: 0;
+          top: 0;
           left: 0;
           width: 480px;
           padding: 10px;
@@ -87,6 +88,7 @@ export const VideoTile: FC<Props> = ({
           color: white;
           z-index: 900;
           animation: fadeIn 0.8s forwards;
+          pointer-events: none;
         }
 
         .delete {
@@ -107,7 +109,7 @@ export const VideoTile: FC<Props> = ({
           padding: 5px;
           background: red;
           opacity: 0.5;
-          z-index: 900;
+          z-index: 901;
         }
 
         .delete :hover {
@@ -121,6 +123,17 @@ export const VideoTile: FC<Props> = ({
           }
           100% {
             opacity: 1;
+          }
+        }
+
+        @media only screen and (max-width: 600px) {
+          .video-tile {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
           }
         }
       `}</style>

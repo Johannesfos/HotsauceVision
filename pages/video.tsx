@@ -11,7 +11,7 @@ type Props = {
 
 export const Video: NextPage<Props> = ({ videos }) => {
   //if logged in, possibility to delete videos
-  const [isSignedIn, setIsSignedIn] = useState<boolean>(true)
+  const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
   const [allVideos, setAllVideos] = useState<VideoModel[]>(videos)
 
   const user = useUser()

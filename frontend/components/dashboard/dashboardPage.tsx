@@ -3,18 +3,18 @@ import { ImageUploader } from './imageUploader'
 import { VideoUploader } from './videoUploader'
 import { useMustAuthenticate } from '../../utils/auth/useUser'
 import { Button } from 'semantic-ui-react'
-
-type DashboardNavOps = 'videoUploader' | 'imageUploader' | 'infoPage'
+import { DashboardBtn } from './DashboardBtn'
+import { Invoice } from './invoice'
+import { Offer } from './offer'
 
 export const DashboardPage = () => {
   const { user } = useMustAuthenticate()
 
-  const [dashboardPage, setDashboardPage] = useState<DashboardNavOps>(
-    'videoUploader'
-  )
+  const [dashboardPage, setDashboardPage] = useState<string>('imageUploader')
 
-  const changeDashboardNavFunction = (newPage: DashboardNavOps) => () =>
-    setDashboardPage(newPage)
+  const changeDashboardNavFunction = (page: string) => {
+    setDashboardPage(page)
+  }
 
   if (!user) {
     return null
@@ -24,37 +24,38 @@ export const DashboardPage = () => {
     <>
       <div className="dashboard-wrapper">
         <div className="dashboard-navigation">
-          <div className="navBtn">
-            <Button
-              onClick={changeDashboardNavFunction('imageUploader')}
-              secondary
-            >
-              Add Image
-            </Button>
-          </div>
-
-          <div className="navBtn">
-            <Button
-              onClick={changeDashboardNavFunction('videoUploader')}
-              secondary
-            >
-              Add Video
-            </Button>
-          </div>
+          <DashboardBtn
+            onClickHandler={changeDashboardNavFunction}
+            label="Add Image"
+            page="imageUploader"
+          />
+          <DashboardBtn
+            onClickHandler={changeDashboardNavFunction}
+            label="Add Video"
+            page="videoUploader"
+          />
+          <DashboardBtn
+            onClickHandler={changeDashboardNavFunction}
+            label="Invoice"
+            page="invoice"
+          />
+          <DashboardBtn
+            onClickHandler={changeDashboardNavFunction}
+            label="Offer"
+            page="offer"
+          />
         </div>
         <div className="dashboard-pages">
           {dashboardPage === 'imageUploader' && <ImageUploader />}
           {dashboardPage === 'videoUploader' && <VideoUploader />}
+          {dashboardPage === 'invoice' && <Invoice />}
+          {dashboardPage === 'offer' && <Offer />}
         </div>
       </div>
       <style jsx>{`
         .dashboard-wrapper {
           display: flex;
           flex-direction: row;
-        }
-
-        .navBtn {
-          margin-bottom: 5px;
         }
 
         .dashboard-navigation {

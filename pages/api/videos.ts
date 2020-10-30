@@ -21,7 +21,7 @@ handler.post(async (req, res) => {
   validateRequest(req.body, user)
 
   const videoId: string = req.body.videoId
-  const newUrl = `https://www.youtube.com/embed/${videoId}`
+  const newUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1.`
   const imgUrl = `https://img.youtube.com/vi/${videoId}/0.jpg`
 
   const videoModel: Omit<VideoModel, 'id'> = {

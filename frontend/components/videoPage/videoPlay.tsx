@@ -12,7 +12,7 @@ export const VideoPlay: FC<Props> = ({ videoId }) => {
           src={videoId}
           width="560"
           height="315"
-          allow="encrypted-media"
+          allow="encrypted-media; autoplay"
           allowFullScreen={true}
         />
       </div>
@@ -37,6 +37,17 @@ export const VideoPlay: FC<Props> = ({ videoId }) => {
           height: 100%;
           display: block;
           border: none;
+        }
+
+        @media only screen and (max-width: 600px) {
+          .video-box {
+            position: relative;
+            height: 190px;
+            width: 400px;
+            overflow: hidden;
+            opacity: 0.95;
+            transition: opacity 1s;
+          }
         }
       `}</style>
     </>
