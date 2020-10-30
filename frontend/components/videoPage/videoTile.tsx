@@ -75,6 +75,11 @@ export const VideoTile: FC<Props> = ({
 
         .video-box {
           position: relative;
+          height: 270px;
+          width: 480px;
+          overflow: hidden;
+          opacity: 0.95;
+          transition: opacity 1s;
         }
 
         .description {
@@ -134,6 +139,11 @@ export const VideoTile: FC<Props> = ({
             align-items: center;
             width: 100%;
             margin-bottom: 20px;
+          }
+          .video-box {
+            position: relative;
+            height: calc(90vw * 0.5625);
+            width: 90vw;
           }
           .description {
             width: 90vw;

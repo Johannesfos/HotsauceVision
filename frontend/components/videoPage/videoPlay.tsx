@@ -7,29 +7,19 @@ type Props = {
 export const VideoPlay: FC<Props> = ({ videoId }) => {
   return (
     <>
-      <div className="video-box">
-        <iframe
-          src={videoId}
-          width="560"
-          height="315"
-          allow="encrypted-media; autoplay"
-          allowFullScreen={true}
-        />
-      </div>
-      <style jsx>{`
-        .video-box {
-          position: relative;
-          height: 270px;
-          width: 480px;
-          overflow: hidden;
-          opacity: 0.95;
-          transition: opacity 1s;
-        }
+      <iframe
+        src={videoId}
+        width="560"
+        height="315"
+        allow="encrypted-media; autoplay"
+        allowFullScreen={true}
+      />
 
-        .video-box iframe,
-        .video-box object,
-        .video-box embed,
-        .video-box video {
+      <style jsx>{`
+        iframe,
+        object,
+        embed,
+        video {
           position: absolute;
           top: 0;
           left: 0;
@@ -37,18 +27,6 @@ export const VideoPlay: FC<Props> = ({ videoId }) => {
           height: 100%;
           display: block;
           border: none;
-        }
-
-        @media only screen and (max-width: 600px) {
-          .video-box {
-            position: relative;
-            height: calc(90vw * 0.5625);
-            width: 90vw;
-            overflow: hidden;
-            opacity: 0.95;
-            transition: opacity 1s;
-            border: 1px red solid;
-          }
         }
       `}</style>
     </>
