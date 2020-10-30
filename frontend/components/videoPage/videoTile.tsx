@@ -135,6 +135,9 @@ export const VideoTile: FC<Props> = ({
             width: 100%;
             margin-bottom: 20px;
           }
+          .description {
+            width: 384px;
+          }
         }
       `}</style>
     </>

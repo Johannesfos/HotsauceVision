@@ -31,7 +31,7 @@ export const Thumbnail: FC<Props> = ({ imgUrl, onPlayHandler }) => {
 
         .thumbnail-img {
           display: block;
-          margin-top: -36px;
+          margin-top: -45px;
         }
         .play-button {
           position: absolute;
