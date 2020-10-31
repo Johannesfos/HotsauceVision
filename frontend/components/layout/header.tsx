@@ -16,7 +16,7 @@ export const Header = () => {
       </header>
       <style jsx>{`
         header {
-          background: #fff;
+          background: black;
           position: relative;
           overflow: hidden;
           width: 100%;

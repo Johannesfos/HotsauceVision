@@ -13,8 +13,13 @@ export const Video: NextPage<Props> = ({ videos }) => {
   //if logged in, possibility to delete videos
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false)
   const [allVideos, setAllVideos] = useState<VideoModel[]>(videos)
+  const [videoPlayingId, setVideoPlaying] = useState<string>('')
 
   const user = useUser()
+
+  const playVideoClicked = (id: string) => {
+    setVideoPlaying(id)
+  }
 
   const deleteVideoById = async (id: string) => {
     const newVideos = allVideos.filter((video) => {
@@ -50,7 +55,9 @@ export const Video: NextPage<Props> = ({ videos }) => {
           return (
             <VideoTile
               deleteVideoById={deleteVideoById}
+              playVideoClickHandler={playVideoClicked}
               isSignedIn={isSignedIn}
+              playId={videoPlayingId}
               video={video}
               key={video.id}
             />

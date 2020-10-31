@@ -9,17 +9,20 @@ type Props = {
   video: VideoModel
   isSignedIn: boolean
   deleteVideoById: (id: string) => void
+  playVideoClickHandler: (id: string) => void
+  playId: string
 }
 
 export const VideoTile: FC<Props> = ({
   video,
   isSignedIn,
   deleteVideoById,
+  playVideoClickHandler,
+  playId,
 }) => {
-  const [onPlay, setOnPlay] = useState<Boolean>(false)
   const [onMouseOver, setOnMouseOver] = useState<Boolean>(false)
   const onPlayHandler = () => {
-    setOnPlay(!onPlay)
+    playVideoClickHandler(video.id)
   }
 
   const deleteClickHandler = () => {
@@ -42,7 +45,7 @@ export const VideoTile: FC<Props> = ({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
         >
-          {!onPlay ? (
+          {video.id !== playId ? (
             <Thumbnail onPlayHandler={onPlayHandler} imgUrl={video.imgUrl} />
           ) : (
             <VideoPlay videoId={video.videoId} />
@@ -78,7 +81,6 @@ export const VideoTile: FC<Props> = ({
           width: 480px;
           overflow: hidden;
           opacity: 0.95;
-          transition: opacity 1s;
         }
 
         .description {
@@ -88,7 +90,7 @@ export const VideoTile: FC<Props> = ({
           width: 480px;
           padding: 10px;
           height: auto;
-          background: rgba(0, 0, 0, 0.4);
+          background: rgba(0, 0, 0, 0.9);
           color: white;
           z-index: 900;
           animation: fadeIn 0.8s forwards;

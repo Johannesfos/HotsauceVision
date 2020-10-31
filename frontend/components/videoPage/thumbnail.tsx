@@ -21,6 +21,7 @@ export const Thumbnail: FC<Props> = ({ imgUrl, onPlayHandler }) => {
           top: 0;
           left: 0;
           margin-top: -45px;
+          animation: fadeIn .5s forwards;
         }
         .play-button {
           margin: auto;
@@ -39,6 +40,14 @@ export const Thumbnail: FC<Props> = ({ imgUrl, onPlayHandler }) => {
         .play-button:hover {
           opacity: 1;
         }
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+
       `}</style>
     </>
   )
