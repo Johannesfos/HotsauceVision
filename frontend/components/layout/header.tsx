@@ -46,6 +46,41 @@ export const Header = () => {
           width: 100%;
           opacity: 0.9;
         }
+
+        @media only screen and (max-width: 600px) {
+          header {
+            background: black;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 30vh;
+            padding-top: calc(9 / 50 * 100%);
+          }
+
+          #logo {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: white;
+            z-index: 999;
+            width: 50vw;
+            height: auto;
+          }
+
+          #video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+          }
+
+          video {
+            display: block;
+            width: 100%;
+            opacity: 0.9;
+          }
+        }
       `}</style>
     </>
   )

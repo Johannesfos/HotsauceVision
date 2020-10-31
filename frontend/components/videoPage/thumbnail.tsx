@@ -16,7 +16,7 @@ export const Thumbnail: FC<Props> = ({ imgUrl, onPlayHandler }) => {
       />
 
       <style jsx>{`
-        img {
+        .thumbnail-img {
           display: block;
           top: 0;
           left: 0;
@@ -33,8 +33,8 @@ export const Thumbnail: FC<Props> = ({ imgUrl, onPlayHandler }) => {
           height: 60px;
           width: 60px;
           z-index: 100;
-          opacity: 0.8;
-          transition: opacity 0.2s ease-out;
+          opacity: 0.7;
+          transition: opacity 0.4s ease-out;
         }
 
         .play-button:hover {

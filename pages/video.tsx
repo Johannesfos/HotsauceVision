@@ -76,7 +76,7 @@ export const Video: NextPage<Props> = ({ videos }) => {
           flex-wrap: wrap;
           margin-top: 50px;
           flex-direction: row;
-          justify-content: space-evenly;
+          justify-content: space-around;
         }
       `}</style>
     </>

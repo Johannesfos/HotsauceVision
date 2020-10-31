@@ -27,7 +27,7 @@ export const Footer = () => {
         </div>
         <div className="parentbox">
           <div className="childbox">
-            <p>© Hotsauce Vision</p>
+            <p>2020 © Hotsauce Vision</p>
             <img src="logo_simple.svg" alt="logo" className="logostyle" />
           </div>
         </div>

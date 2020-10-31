@@ -66,19 +66,21 @@ export const VideoTile: FC<Props> = ({
           flex-direction: column;
           flex-wrap: wrap;
           align-items: center;
-          margin: 60px;
+          margin: 40px;
+          width: 480px;
         }
         .title {
           font-weight: 300;
           font-size: 30px;
           line-height: 30px;
-          width: 97%;
+          width: 100%;
+          text-align: left;
         }
 
         .video-box {
           position: relative;
           height: 270px;
-          width: 480px;
+          width: 100%;
           overflow: hidden;
           opacity: 0.95;
         }
@@ -87,7 +89,7 @@ export const VideoTile: FC<Props> = ({
           position: absolute;
           top: 0;
           left: 0;
-          width: 480px;
+          width: 100%;
           padding: 10px;
           height: auto;
           background: rgba(0, 0, 0, 0.9);

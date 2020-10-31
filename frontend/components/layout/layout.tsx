@@ -92,6 +92,18 @@ export const Layout: FC = ({ children }) => {
           padding-right: 50px;
           padding-bottom: 70vh;
         }
+
+        @media only screen and (max-width: 600px) {
+          nav {
+            background: black;
+            display: flex;
+            justify-content: flex-start;
+            font-size: calc(1em + 0.5vw);
+            position: fixed;
+            top: 0;
+            z-index: 12000;
+          }
+        }
       `}</style>
       <style jsx global>{`
         body {
