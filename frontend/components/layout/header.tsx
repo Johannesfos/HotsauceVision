@@ -6,12 +6,12 @@ export const Header = () => {
       <header>
         <div id="video-container">
           <video autoPlay muted loop>
-            <source src="backvideo.mp4" type="video/mp4" />
+            <source src="/backvideo1.mp4" type="video/mp4" />
           </video>
         </div>
-
+        <div className="overlay"></div>
         <div id="logo">
-          <img src="logo_header.svg" />
+          <img src="/logo_header.svg" />
         </div>
       </header>
       <style jsx>{`
@@ -35,10 +35,21 @@ export const Header = () => {
 
         #video-container {
           position: absolute;
-          top: -20%;
+          top: -70%;
           left: 0;
           right: 0;
           bottom: 0;
+          z-index: 200;
+        }
+        .overlay {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          opacity: 1;
+          z-index: 500;
+          background: linear-gradient(transparent, black);
         }
 
         video {
@@ -69,7 +80,7 @@ export const Header = () => {
 
           #video-container {
             position: absolute;
-            top: 0;
+            top: -35%;
             left: 0;
             right: 0;
             bottom: 0;

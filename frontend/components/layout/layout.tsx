@@ -26,6 +26,9 @@ export const Layout: FC = ({ children }) => {
             <Link prefetch href="/video">
               <a>Video</a>
             </Link>
+            <Link href="/about">
+              <a>About</a>
+            </Link>
             <Link href="/dashboard">
               <a>Dashboard</a>
             </Link>
@@ -54,7 +57,7 @@ export const Layout: FC = ({ children }) => {
           display: flex;
           justify-content: flex-start;
           font-size: calc(0.5em + 0.5vw);
-          position: fixed;
+          position: sticky;
           top: 0;
           z-index: 12000;
         }
@@ -92,14 +95,13 @@ export const Layout: FC = ({ children }) => {
           padding-right: 50px;
           padding-bottom: 70vh;
         }
-
         @media only screen and (max-width: 600px) {
           nav {
             background: black;
             display: flex;
             justify-content: flex-start;
             font-size: calc(1em + 0.5vw);
-            position: fixed;
+            position: sticky;
             top: 0;
             z-index: 12000;
           }

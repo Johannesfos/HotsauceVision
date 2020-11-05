@@ -15,20 +15,24 @@ export const Footer = () => {
               href="https://www.instagram.com/hotsaucevision/?hl=nba"
               target="_blank"
             >
-              <img src="insta.svg" alt="insta" className="soslogostyle" />
+              <img src="/insta.svg" alt="insta" className="soslogostyle" />
             </a>
             <a
               href="https://www.facebook.com/Hot-Sauce-Vision-2346656055382250/"
               target="_blank"
             >
-              <img src="facebook.svg" alt="facebook" className="soslogostyle" />
+              <img
+                src="/facebook.svg"
+                alt="facebook"
+                className="soslogostyle"
+              />
             </a>
           </div>
         </div>
         <div className="parentbox">
           <div className="childbox">
             <p>2020 © Hotsauce Vision</p>
-            <img src="logo_simple.svg" alt="logo" className="logostyle" />
+            <img src="/logo_simple.svg" alt="logo" className="logostyle" />
           </div>
         </div>
       </div>
